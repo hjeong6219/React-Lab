@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import useBooksContext from '../hooks/use-books-context';
 
-function BookCreate({ onCreate }) {
+function BookCreate() {
     const [ title, setTitle ] = useState('');
+    const { createBook } = useBooksContext();
     const handleChange = (event) => {
         setTitle(event.target.value);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onCreate(title);
+        createBook(title);
         setTitle('');
-    }
+    };
 
     return (
         <div className='book-create'>
@@ -18,7 +20,7 @@ function BookCreate({ onCreate }) {
             <form onSubmit={ handleSubmit }>
                 <label>Title</label>
                 <input className='input' value={ title } onChange={ handleChange }/>
-                <button className='button' onSubmit={ onCreate }>Create!</button>
+                <button className='button' onSubmit={ createBook }>Create!</button>
             </form>
         </div>
     );
