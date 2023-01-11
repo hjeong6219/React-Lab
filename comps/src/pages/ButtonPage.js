@@ -3,25 +3,24 @@ import { GoBell, GoCloudDownload, GoDatabase } from 'react-icons/go'
 
 function ButtonPage() {
     const handleClick = () => {
-        console.log('click!');
     };
 
     return (
         <div>
             <div>
-                <Button primary rounded outline className="mb-5" onClick={ handleClick }><GoBell />Click me!!</Button>
+                <Button primary rounded outline onClick={ handleClick }><GoBell />Click me!!</Button>
             </div>
             <div>
-                <Button secondary outline><GoCloudDownload className='mr-1'/>Buy Now!</Button>
+                <Button secondary rounded outline><GoCloudDownload/>Buy Now!</Button>
             </div>
             <div>
-                <Button success><GoDatabase />See Deal!</Button>
+                <Button success rounded outline><GoDatabase />See Deal!</Button>
             </div>
             <div>
-                <Button warning>Hide Ads!</Button>
+                <Button warning rounded outline>Hide Ads!</Button>
             </div>
             <div>
-                <Button danger>Something!</Button>
+                <Button danger rounded outline>Something!</Button>
             </div>
         </div>
     )
