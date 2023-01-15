@@ -1,0 +1,65 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Myra"
+    },
+    {
+      "id": 2,
+      "name": "Elsie Price"
+    },
+    {
+      "id": 3,
+      "name": "Harold Strosin"
+    }
+  ],
+  "albums": [
+    {
+      "userId": 1,
+      "title": "Practical Soft Pants",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Oriental Soft Car",
+      "id": 15
+    },
+    {
+      "userId": 1,
+      "title": "Handcrafted Bronze Soap",
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "title": "Recycled Soft Tuna",
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "title": "Intelligent Soft Car",
+      "id": 18
+    }
+  ],
+  "photos": [
+    {
+      "albumId": 14,
+      "url": "https://loremflickr.com/150/150/abstract?lock=87415",
+      "id": 1
+    },
+    {
+      "albumId": 14,
+      "url": "https://loremflickr.com/150/150/abstract?lock=37127",
+      "id": 2
+    },
+    {
+      "albumId": 14,
+      "url": "https://loremflickr.com/150/150/abstract?lock=12174",
+      "id": 4
+    },
+    {
+      "albumId": 14,
+      "url": "https://loremflickr.com/150/150/abstract?lock=74285",
+      "id": 5
+    }
+  ]
+}
