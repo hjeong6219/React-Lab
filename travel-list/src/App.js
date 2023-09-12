@@ -78,10 +78,25 @@ function Item({ item, onDeleteItems, onPackItems }) {
   );
 }
 
-function Stats() {
+function Stats({ items }) {
+  if (!items.length)
+    return (
+      <p className="stats">
+        <em>Start adding some items to your packing list</em>
+      </p>
+    );
+
+  const numItems = items.length;
+  const numPacked = items.filter((item) => item.packed).length;
+  const percPacked = Math.round((numPacked / numItems) * 100);
   return (
     <footer className="stats">
-      <em>You have X items on your list, and you already packed X (X%)</em>
+      <em>
+        {percPacked === 100
+          ? "All items have been packed!"
+          : `        You have ${numItems} items on your list, and you already packed
+        ${numPacked} (${percPacked}%)`}
+      </em>
     </footer>
   );
 }
@@ -114,7 +129,7 @@ function App() {
         onPackItems={handlePackedItem}
         items={items}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }
