@@ -45,21 +45,31 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItems }) {
+function PackingList({ items, onDeleteItems, onPackItems }) {
   return (
     <div>
       <ul className="list">
         {items.map((item) => (
-          <Item item={item} key={item.id} onDeleteItems={onDeleteItems} />
+          <Item
+            item={item}
+            key={item.id}
+            onDeleteItems={onDeleteItems}
+            onPackItems={onPackItems}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item, onDeleteItems }) {
+function Item({ item, onDeleteItems, onPackItems }) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => onPackItems(item.id)}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
@@ -83,6 +93,14 @@ function App() {
     setItems((items) => [...items, item]);
   }
 
+  function handlePackedItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+
   function handleDeleteItems(id) {
     setItems((items) => items.filter((item) => item.id !== id));
   }
@@ -91,7 +109,11 @@ function App() {
     <div className="App">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList onDeleteItems={handleDeleteItems} items={items} />
+      <PackingList
+        onDeleteItems={handleDeleteItems}
+        onPackItems={handlePackedItem}
+        items={items}
+      />
       <Stats />
     </div>
   );
