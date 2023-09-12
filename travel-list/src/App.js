@@ -45,7 +45,7 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItems, onPackItems }) {
+function PackingList({ setItems, items, onDeleteItems, onPackItems }) {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItems;
@@ -81,6 +81,7 @@ function PackingList({ items, onDeleteItems, onPackItems }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={() => setItems([])}>Clear List</button>
       </div>
     </div>
   );
@@ -118,7 +119,7 @@ function Stats({ items }) {
       <em>
         {percPacked === 100
           ? "All items have been packed!"
-          : `        You have ${numItems} items on your list, and you already packed
+          : `You have ${numItems} items on your list, and you already packed
         ${numPacked} (${percPacked}%)`}
       </em>
     </footer>
@@ -152,6 +153,7 @@ function App() {
         onDeleteItems={handleDeleteItems}
         onPackItems={handlePackedItem}
         items={items}
+        setItems={setItems}
       />
       <Stats items={items} />
     </div>
