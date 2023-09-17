@@ -12,7 +12,7 @@ import FinishedScreen from "./components/FinishedScreen";
 const initialState = {
   questions: [],
   status: "loading",
-  index: 13,
+  index: 0,
   answer: null,
   points: 0,
   highscore: 0,
@@ -59,6 +59,12 @@ function reducer(state, action) {
         status: "finished",
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
+      };
+    case "restart":
+      return {
+        ...initialState,
+        questions: state.questions,
+        status: "ready",
       };
     default:
       throw new Error("Action unknown");
