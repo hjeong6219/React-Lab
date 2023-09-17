@@ -1,3 +1,5 @@
+import { useParams } from "react-router-dom";
+import BackButton from "./BackButton";
 import styles from "./City.module.css";
 
 const formatDate = (date) =>
@@ -9,7 +11,7 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  // TEMP DATA
+  const { id } = useParams();
   const currentCity = {
     cityName: "Lisbon",
     emoji: "🇵🇹",
@@ -52,7 +54,7 @@ function City() {
       </div>
 
       <div>
-        <ButtonBack />
+        <BackButton />
       </div>
     </div>
   );
