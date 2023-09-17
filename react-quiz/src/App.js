@@ -5,6 +5,9 @@ import Loader from "./components/Loader";
 import Error from "./components/Error";
 import StartScreen from "./components/StartScreen";
 import Question from "./components/Question";
+import NextButton from "./components/NextButton";
+import Progress from "./components/Progress";
+import FinishedScreen from "./components/FinishedScreen";
 
 const initialState = {
   questions: [],
@@ -43,6 +46,17 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
       };
+    case "nextQuestion":
+      return {
+        ...state,
+        index: state.index++,
+        answer: null,
+      };
+    case "finish":
+      return {
+        ...state,
+        status: "finished",
+      };
     default:
       throw new Error("Action unknown");
   }
@@ -54,6 +68,10 @@ export default function App() {
     initialState
   );
   const numQuestions = questions.length;
+  const maxPossiblePoints = questions.reduce(
+    (prev, cur) => prev + cur.points,
+    0
+  );
 
   useEffect(function () {
     fetch("http://localhost:8000/questions")
@@ -71,11 +89,31 @@ export default function App() {
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === "active" && (
-          <Question
-            question={questions[index]}
-            dispatch={dispatch}
-            answer={answer}
+          <>
+            <Progress
+              index={index}
+              numQuestions={numQuestions}
+              points={points}
+              maxPossiblePoints={maxPossiblePoints}
+              answer={answer}
+            />
+            <Question
+              question={questions[index]}
+              dispatch={dispatch}
+              answer={answer}
+            />
+            <NextButton
+              dispatch={dispatch}
+              answer={answer}
+              index={index}
+              numQuestions={numQuestions}
+            />
+          </>
+        )}
+        {status === "finished" && (
+          <FinishedScreen
             points={points}
+            maxPossiblePoints={maxPossiblePoints}
           />
         )}
       </Main>
