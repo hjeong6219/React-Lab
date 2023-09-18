@@ -71,11 +71,10 @@ function Results() {
 }
 
 function Main() {
-  const { posts, onAddPost } = usePosts();
   return (
     <main>
-      <FormAddPost onAddPost={onAddPost} />
-      <Posts posts={posts} />
+      <FormAddPost />
+      <Posts />
     </main>
   );
 }
