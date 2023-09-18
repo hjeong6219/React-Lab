@@ -42,12 +42,7 @@ function Map() {
   );
 
   return (
-    <div
-      className={styles.mapContainer}
-      onClick={() => {
-        navigate("form");
-      }}
-    >
+    <div className={styles.mapContainer}>
       <Button type="position" onClick={getPosition}>
         {isLoadingPosition ? "Loading..." : "Use your position"}
       </Button>
