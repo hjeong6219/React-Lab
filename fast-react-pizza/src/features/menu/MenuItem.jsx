@@ -4,13 +4,13 @@ import Button from '../../ui/Button';
 import { addItem, getCurrentQuantityById } from '../cart/cartSlice';
 import DeleteItem from '../cart/DeleteItem';
 import { current } from '@reduxjs/toolkit';
+import UpdateItemQuantity from '../cart/UpdateItemQuantity';
 
 function MenuItem({ pizza }) {
   const dispatch = useDispatch();
 
   const { id, name, unitPrice, ingredients, soldOut, imageUrl } = pizza;
   const currentQuantity = useSelector(getCurrentQuantityById(id));
-  console.log(currentQuantity);
 
   function handleAddToCart() {
     const newItem = {
@@ -49,7 +49,13 @@ function MenuItem({ pizza }) {
                 Add to cart
               </Button>
             ) : (
-              <DeleteItem pizzaId={id} />
+              <div className="flex items-center gap-3 sm:gap-8">
+                <UpdateItemQuantity
+                  pizzaId={id}
+                  currentQuantity={currentQuantity}
+                />
+                <DeleteItem pizzaId={id} />
+              </div>
             ))}
         </div>
       </div>
