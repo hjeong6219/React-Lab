@@ -4,8 +4,6 @@ import DeleteItem from './DeleteItem';
 
 function CartItem({ item }) {
   const { pizzaId, name, quantity, totalPrice } = item;
-  console.log(totalPrice);
-  console.log(item);
 
   return (
     <li className="py-3 sm:flex sm:items-center sm:justify-between">
