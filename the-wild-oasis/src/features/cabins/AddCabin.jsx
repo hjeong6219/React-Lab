@@ -23,20 +23,4 @@ function AddCabin() {
   );
 }
 
-// function AddCabin() {
-//   const [isOpenModal, setisOpenModal] = useState(false);
-//   return (
-//     <div>
-//       <Button variation="primary" onClick={() => setisOpenModal(!isOpenModal)}>
-//         Add new cabin
-//       </Button>
-//       {isOpenModal && (
-//         <Modal onClose={() => setisOpenModal(false)}>
-//           <CreateCabinForm onCloseModal={() => setisOpenModal(false)} />
-//         </Modal>
-//       )}
-//     </div>
-//   );
-// }
-
 export default AddCabin;
